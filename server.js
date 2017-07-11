@@ -12,7 +12,7 @@ app.use((req, res, next) => {
 
 app.get('/send/:video', (req, res) => {
   const video = req.params.video;
-  io.emit(video);
+  io.emit('video', video);
   res.send({ msg: 'OK' });
 });
 
