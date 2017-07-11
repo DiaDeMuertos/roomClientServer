@@ -10,10 +10,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/', (req, res) => {
-  res.send({ msg: 'Hello world', dirName: __dirname });
-});
-
 app.get('/send/:video', (req, res) => {
   const video = req.params.video;
   io.emit(video);
