@@ -6,7 +6,7 @@ const exec = require('child_process').exec;
 const socket = io.connect('http://localhost:3000');
 
 socket.on('video', (video) => {
-  const pathVideo = '/home/diademuertos/Desktop/video';
+  const pathVideo = '/home/diademuertos/Desktop/videos';
 
   const cmd = `vlc --play-and-exit ${pathVideo}/${video}.mp3`;
 
