@@ -10,14 +10,19 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/send/:video', (req, res) => {
+app.get('/play/:video', (req, res) => {
   const video = req.params.video;
-  io.emit('video', video);
+  io.emit('play', video);
+  res.send({ msg: 'OK' });
+});
+
+app.get('/stop', (req, res) => {
+  io.emit('stop');
   res.send({ msg: 'OK' });
 });
 
 io.on('connection', (socket) => {
-  socket.on('video', (msg) => {
+  socket.on('user', (msg) => {
     console.log(`message: ${msg}`);
   });
 });

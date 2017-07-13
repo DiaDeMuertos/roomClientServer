@@ -5,7 +5,7 @@ const exec = require('child_process').exec;
 
 const socket = io.connect('http://localhost:3000');
 
-socket.on('video', (video) => {
+socket.on('play', (video) => {
   const pathVideo = '/home/diademuertos/Desktop/videos';
 
   const cmd = `vlc --play-and-exit ${pathVideo}/${video}`;
@@ -19,4 +19,16 @@ socket.on('video', (video) => {
   });
 });
 
-socket.emit('video', 'AlienWare_1');
+socket.on('stop', () => {
+  const cmd = 'ls';
+
+  exec(cmd, (error, stdout, stderr) => {
+    if (error) {
+      console.log(stderr);
+    } else {
+      console.log(stdout);
+    }
+  });
+});
+
+socket.emit('user', 'AlienWare_1');
