@@ -10,14 +10,25 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/play/:video', (req, res) => {
+app.get('/play-video/:video', (req, res) => {
   const video = req.params.video;
-  io.emit('play', video);
+  io.emit('play-video', video);
   res.send({ msg: 'OK' });
 });
 
-app.get('/stop', (req, res) => {
-  io.emit('stop');
+app.get('/stop-video', (req, res) => {
+  io.emit('stop-video');
+  res.send({ msg: 'OK' });
+});
+
+app.get('/play-app/:app', (req, res) => {
+  const appParam = req.params.app;
+  io.emit('play-app', appParam);
+  res.send({ msg: 'OK' });
+});
+
+app.get('/stop-app', (req, res) => {
+  io.emit('stop-app');
   res.send({ msg: 'OK' });
 });
 
