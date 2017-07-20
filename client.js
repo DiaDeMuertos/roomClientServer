@@ -34,7 +34,7 @@ socket.on('stop-video', () => {
 });
 
 socket.on('play-app', (app) => {
-  const pathApp = '/home/diademuertos/Desktop/videos';
+  const pathApp = '/home/diademuertos/Desktop/apps';
 
   const cmd = `vlc --play-and-exit ${pathApp}/${app}`;
 
